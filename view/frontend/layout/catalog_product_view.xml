@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<body>
+    <referenceContainer name="product.info.main">
+        <block class="Twinkle\ReviewSentiment\Block\ReviewSentiment" name="product.review.sentiment" template="Twinkle_ReviewSentiment::review_sentiment.phtml"/>
+    </referenceContainer>
+</body>

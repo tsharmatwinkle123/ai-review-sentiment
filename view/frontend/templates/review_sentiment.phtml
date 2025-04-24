@@ -1,0 +1,67 @@
+<?php
+/** @var \Vendor\ReviewSentiment\Block\ReviewSentiment $block */
+$sentiment = $block->getOverallSentiment();
+?>
+
+<div class="product-sentiment">
+    <strong>Overall Product Sentiment:</strong> 
+    <span class="sentiment-<?php echo strtolower($sentiment); ?>">
+        <?php echo $sentiment; ?>
+    </span>
+</div>
+
+<style>
+.sentiment-positive {
+    color: #28a745;
+    font-weight: bold;
+    background-color: #d4edda;
+    padding: 4px 8px;
+    border-radius: 8px;
+    animation: pulse-green 1.5s infinite;
+}
+
+.sentiment-negative {
+    color: #dc3545;
+    font-weight: bold;
+    background-color: #f8d7da;
+    padding: 4px 8px;
+    border-radius: 8px;
+    animation: pulse-red 1.5s infinite;
+}
+
+.sentiment-neutral {
+    color: #6c757d;
+    font-weight: bold;
+    background-color: #e2e3e5;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(40, 167, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+}
+
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const sentiments = document.querySelectorAll('[class^="sentiment-"]');
+
+    sentiments.forEach(function (element) {
+        element.addEventListener('mouseenter', function () {
+            element.style.transform = 'scale(1.1)';
+            element.style.transition = 'transform 0.3s ease';
+        });
+
+        element.addEventListener('mouseleave', function () {
+            element.style.transform = 'scale(1)';
+        });
+    });
+});
+</script>
